@@ -1,0 +1,48 @@
+package testeGamemania;
+
+import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class testeLogin {
+	private WebDriver driver;
+	
+
+	@Before
+	public void abrirNavegador() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Leo\\chromedriver\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+	}
+	
+	
+	@Test
+	 public void testeNavegador() {
+		 driver.get("http://localhost:4200/login");
+		 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		 WebElement inputEmail = driver.findElement(By.className("logar"));
+		 WebElement inputSenha = driver.findElement(By.className("password"));
+		 WebElement botaoLogin = driver.findElement(By.className("bt-logar"));
+		 
+		 String[] listaSenhas = {"senha1", " senhaerrada", "teste1","test","senhaerradadenovo","teste","senhadothiago"};
+		 
+		 for (int i = 0 ; i < listaSenhas.length; i++ ) {
+			inputEmail.clear();
+			inputSenha.clear();
+			inputEmail.sendKeys("thiago@email.com");
+			inputSenha.sendKeys(listaSenhas[i]);
+			botaoLogin.click();
+			
+		}
+	
+	
+	}
+	
+}

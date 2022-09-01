@@ -1,0 +1,39 @@
+package testeGamemania;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class testeLogin {
+	private WebDriver driver;
+	
+
+	@Before
+	public void abrirNavegador() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Leo\\chromedriver\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+	}
+	
+	
+	@Test
+	 public void testeNavegador() {
+		 driver.get("http://localhost:4200/login");
+		 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		 driver.findElement(By.className("logar")).sendKeys("thiago@email.com");
+		 driver.findElement(By.className("password")).sendKeys("senhwadothiago");
+		 driver.findElement(By.className("bt-logar")).click();
+		
+		 
+	 
+		
+		 
+		 }
+	
+}
